@@ -1,0 +1,13 @@
+[Unit]
+Description=Atlassian JIRA
+After=network.target
+
+[Service]
+Type=forking
+User=<%= node['jira']['user'] %>
+PIDFile=<%= node['jira']['install_path'] %>/work/catalina.pid
+ExecStart=<%= node['jira']['install_path'] %>/bin/start-jira.sh
+ExecStop=<%= node['jira']['install_path'] %>/bin/stop-jira.sh
+
+[Install]
+WantedBy=multi-user.target
